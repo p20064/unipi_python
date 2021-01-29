@@ -1,7 +1,18 @@
+#################################################################################
+# Εφαρμογή για τη δημιουργία στατιστικών για την  πρώτη κλήρωση της ημέρας,
+# για τον τρέχοντα μήνα για το ΚΙΝΟ. Το παιχνίδι αλλάζει αν το ορίσουμε
+# στη μεταβλητή gameID
+# URLs:
+# "https://api.opap.gr/draws/v3.0/{gameId}/draw-date/{fromDate}/{toDate}/draw-id"
+# "https://api.opap.gr/draws/v3.0/{gameId}/{drawId}"
+#################################################################################
+
+
 import urllib.request
 import urllib.error
 import json
 from datetime import date
+
 nums={}
 
 def get_web_content(url):
@@ -23,13 +34,11 @@ def get_web_content(url):
             print('Αιτία: ', e.reason)
         return -1
 
-#url="https://api.opap.gr/draws/v3.0/{gameId}/draw-date/{fromDate}/{toDate}/draw-id"
-#url="https://api.opap.gr/draws/v3.0/{gameId}/{drawId}"
 
 gameID=1100
-cDate=date.today()
+cDate=date.today() # Current date
 base_url="https://api.opap.gr/draws/v3.0/{:04d}/draw-date/".format(gameID)
-yearMonth="{:04d}-{:02d}-".format(cDate.year, cDate.month)
+yearMonth="{:04d}-{:02d}-".format(cDate.year, cDate.month) # Current month and year
 
 message = "Στατιστικά κληρώσεων ΟΠΑΠ για το πρώτο παιχνίδι ΚΙΝΟ της ημέρας στην περίοδο: {:d}-{:d}".format(cDate.month, cDate.year)
 print(message)

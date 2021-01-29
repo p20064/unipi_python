@@ -11,14 +11,14 @@ filename=input("Δώσε όνομα αρχείου: ")
 if filename=='': exit
 
 try:
-    with open(filename, "r") as f:
+    with open(filename, "r", encoding = "utf-8") as f:
         text = f.read()
 
     text = clear_keimeno(text)
     C=[]
     for letter in text:
         code = ord(letter) # character ascii code
-        if ((letter not in C) and (code%2==1))): C.append(letter)
+        if ((letter not in C) and (code%2==1)): C.append(letter)
     C.sort()
 
     chars={}
