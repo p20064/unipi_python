@@ -10,15 +10,15 @@ import urllib.error
 import json
 
 def get_file_content(fname):
-# Διαβαζει τα περιεχομενα του αρχειου filename
+# Διαβαζει τα περιεχομενα του αρχειου fname
 # που περιεχει τον πινακα με τα κρυπτονομισματα του χρήστη
     try:
-        with open(filename) as fp:
+        with open(fname) as fp:
             mydict = json.load(fp)
         return mydict
 
     except FileNotFoundError:
-        print('Το αρχείο {} δεν βρέθηκε'.format(filename))
+        print('Το αρχείο {} δεν βρέθηκε'.format(fname))
         return -1
 
 def get_coin_data(coins):
